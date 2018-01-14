@@ -1,0 +1,32 @@
+.example:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.reveal .example {
+	max-width: 60%;
+	margin: 0 auto;
+	position: relative;
+}
+.reveal .example p {
+    font-size: 60%;
+    text-align: left;
+}
+.reveal .example img {
+	float: left;
+	width: auto;
+	max-width: 40%;
+	margin: 0 10px 10px 0;
+}
+.reveal .example .caption {
+	position: absolute;
+	left: 0;
+	bottom: 0px;
+    font-size: 40%;
+}
+.reveal .example + p {
+	font-size: 90%;
+}
+.reveal .example ~ ol li  {
+    font-size: 80%;
+}

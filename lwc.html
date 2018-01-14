@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Alternative Text for Images on the Web</title>
+    <meta name="author" content="Elizabeth Yalkut">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/sky.css" id="theme">
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Printing and PDF exports -->
+    <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+    <div class="reveal">
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section>
+                <h1>Alternative Text for Images</h1>
+            </section>
+            <section>
+                <h2>Why do we care?</h2>
+                <dl>
+                    <dt>Accessibility =</dt>
+                    <dd class="fragment">more users can understand your content</dd>
+                    <span class="fragment"><dd>search engines can parse your content</dd>
+                    <dd><strong>everyone</strong> has a better experience</dd></span>
+                </dl>
+                <h3 class="fragment">Also it's legally required.</h3>
+                <aside class="notes">
+                    <p>Accessibility is usually thought of as something you do for users with disabilities. True, but not the whole truth. ADVANCE FRAGMENT. Accessibility means that people on slow connections, such as crappy cell phone wifi or in rural areas where broadband isn't available, when images time out loading, have an easier time using your website. It means that if an image gets deleted from the server but it's still being linked in your content, there's a fallback. ADVANCE FRAGMENT. It gives search engines an easy way to provide information to <em>their</em> users, and we all want to make life easier for The Great God Google.</p>
+                    <p>ADVANCE FRAGMENT. Technically this is only true for federal agencies and organizations that are subject to Title III of the Americans with Disabilities Act. But your HTML won't validate if your alternative text for images is screwed up, and also it's the right thing to do.</p>
+                </aside>
+            </section>
+            <section>
+                    <h2>Alternative text for images on the web</h2>
+                    <p>alt attribute: <pre><code data-trim data-noescape>&lt;img src=&quot;/sites/default/files/image.png&quot; <mark>alt=&quot;Sign that reads Do not read this sign&quot;</mark>&gt;</code></pre></p>
+                    <aside class="notes">
+                      <p>The best way to ensure that images are accessible is using an alt tag. You can enhance this technique with additional things like captions, but captions are not enough on their own.</p>
+                        <p>Most rich text editors and media libraries will have a handy textfield for users.</p>
+                    </aside>
+
+            </section>
+            <section>
+                <h2>But what do I write?</h2>
+                <p>Think about the <em>content</em> and <em>function</em> of your image.</p>
+                <ul>
+                    <li>Is the image decorative or informative?</li>
+                    <li>Is there text in the image?</li>
+                        <li>Does the image link somewhere?</li>
+                </ul>
+                <aside class="notes"><p>These are the first questions you should ask when you're creating alternative text for an image. The answers to these will point you in the right direction for your next steps.</p>
+                </aside>
+            </section>
+            <section>
+                <h2>Decorative or informative?</h2>
+                <p><strong>Decorative</strong>:</p><p>pretty! conveys no information! Use empty alt text.</p>
+                <p><strong>Informative</strong>:</p>
+                <ul>
+                    <li>Picture: provide a name or a short description</li>
+                    <li>Text: reproduce the text word for word</li>
+                    <li>Data: provide an overview</li>
+                    <li>Functional: emphasize action</li>
+                </ul>
+                <aside class="notes">
+                <p>Decorative images should not be in your HTML. Move them to CSS if at all possible. If you can't do that, provide an alt tag without any text in it. This way, screen readers know it is just there to be pretty.</p>
+                    <p>Pictures: coming up in a moment. Text: Don't do this. If you have an image with text, take the image out and put the text in your written content. If you <em>must</em> have an image with text (MARKETING), duplicate the text in its entirety in your alternative text. If you have data, like a graph or chart, summarize the information that the data is providing. In most cases, an image will only have a function if it is contained within a link.</p>
+                </aside>
+            </section>
+            <section>
+                <section>
+                    <h2>Example 1</h2>
+                    <div class="example"><img src="img/access-george.jpg" alt="example image">
+                        <p>Because of his role as the Commander in Chief of American forces in the Revolutionary War, and, later, the first President of the United States, George Washington is often called the "Father of his Country".</p>
+                    </div>
+                    <p class="fragment">What would be appropriate alternative text for this image?</p>
+                    <ol class="fragment">
+                        <li>"Image of George Washington"</li>
+                        <li>"George Washington, the first president of the United States"</li>
+                        <li>An empty alt tag is fine.</li>
+                        <li>"George Washington"</li>
+                    </ol>
+                    <aside class="notes">
+                        <p>Informative pictures! Images with content! Whatever you call them, they are the complicated, common, interesting problem of alternative text. And there may not be an easy answer. First principles: </p>
+                        <p>The <code>alt</code> text for a picture should:</p>
+                        <ul>
+                            <li><strong>Be succinct.</strong> Typically no more than a few words are necessary, though rarely a short sentence or two may be appropriate.</li>
+                            <li><strong>NOT be redundant</strong> or provide the same information as text in the mage's context.</li>
+                            <li><strong>NOT use the phrases "image of ..." or "photo of ..." to describe the image.</strong> Users can tell when things are images. And if the image is conveying content, the user doesn't care that it's an image that's conveying the content, rather than text. If the fact that an image is a photograph, a painting, or an illustration is important content, it may be useful to include this, but that's a special case.</li>
+                        </ul>
+                        <p>ADVANCE FRAGMENT. Ten seconds for audience to think about what they would use for alt text. ADVANCE FRAGMENT. Let's go through these options and discuss what's right and wrong about them. #1 shouldn't have the words "Image of", so we can reject that option. #2 is redundant, providing information that is already available in the context, so throw that out. #3 isn't right because this image isn't purely decorative; it does provide information to the visual user that needs to be available to everyone. So we're left with #4, which can probably be improved, but does concisely name the image and isn't redundant.</p>
+                    </aside>
+                </section>
+                <section>
+                    <h2>Example 2</h2>
+                    <div class="example">
+                        <img src="img/access-george.jpg" alt="example image"><span class="caption">George Washington</span>
+                        <p>Because of his role as the Commander in Chief of American forces in the Revolutionary War, and, later, the first President of the United States, George Washington is often called the "Father of his Country".</p>
+                    </div>
+                    <p>What would be appropriate alternative text for this image?</p>
+                    <ol>
+                        <li>"George Washington"</li>
+                        <li>An empty alt tag is fine.</li>
+                        <li>"Image"</li>
+                        <li>The image does not need an alt tag.</li>
+                    </ol>
+                    <aside class="notes">
+                        <p>In this case, the content of the image is presented within the surrounding context, so #2, empty alt text, is the best one of the choices. #1 would be redundant, because of the caption. #3 provides extraneous and useless information. #4 is never the right choice &mdash; every image must have an alt attribute.</p>
+                    </aside>
+                </section>
+                <section>
+                    <h2>Example 3</h2>
+                    <div class="example">
+                        <a href="http://en.wikipedia.org/wiki/George_Washington"><img src="img/access-george.jpg" alt="example image"></a><span class="caption"><a href="http://en.wikipedia.org/wiki/George_Washington">George Washington</a></span>
+                        <p>Because of his role as the Commander in Chief of American forces in the Revolutionary War, and, later, the first President of the United States, George Washington is often called the "Father of his Country".</p>
+                    </div>
+                    <p>What would be appropriate alternative text for this image?</p>
+                    <ol>
+                        <li>An empty alt attribute (alt="") will suffice.</li>
+                        <li>"Wikipedia entry for George Washington"</li>
+                        <li>"Read More"</li>
+                        <li>"George Washington"</li>
+                    </ol>
+                    <aside class="notes">
+                        <p>In this case, the image is also a link, so it has a function. #4 ("George Washington") is likely the best choice. While the words "George Washington" in the alt attribute are redundant with the text that follows, in this case the redundancy is necessary to adequately describe the function.</p>
+                        <p>#1 is not adequate. An image that is the only thing inside a link cannot have a missing or empty alt attribute. This is because the screen reader must read SOMETHING to identify the link. Screen readers might read the image file name or the URL of the page being linked to, which may or may not be useful. And remember, that the link may be read out of context of the surrounding text, such as when the user is navigating by links within the page. #2 provides information that is not available through the image alone (i.e., you can't tell the image links to Wikipedia simply by looking at it). #3 does not provide an adequate description of the function, especially out of context.</p>
+                        <p>When possible, avoid using "link to..." or "click this image to..." or similar wording in the alt attribute. Links are identified as links by screen readers and sighted users have visual bangs and whistles.</p>
+                    </aside>
+                </section>
+                <section>
+                    <h2>Example 4</h2>
+                    <div class="example">
+                        <img src="/img/access-delaware.jpg" alt="example image">
+                        <p>In this painting, the artist Emanuel Leutze used light, color, form, perspective, proportion, and motion to create the composition.</p>
+                    </div>
+                    <p>What would be appropriate alternative text for this image?</p>
+                    <ol><li>"George Washington"</li>
+                        <li>"Painting of George Washington"</li>
+                        <li>"Painting of George Washington crossing the Delaware River"</li>
+                        <li>"A painting demonstrating the use of light and color in composition."</li>
+                        <li>"Painting of George Washington crossing the Delaware River. Swirling waves surround the boat where George Washington looks forward out of the storm and into the rays of light across the river as he leads his wary troops to battle."</li>
+                    </ol>
+                    <aside class="notes"><p>This one is legitimately hard, especially since we don't have a realistic context for this tiny excerpt. But we can try!</p><p>#1 isn't really enough; the part where George Washington is a figure in the painting may not be the point. #2 isn't terrible, because it may be useful to know that the image is of a painting instead of a photograph, so let's not reject it right away. #3 has some information that may help the user to identify the image from another context, since I remind you that alternative text isn't just for the blind. #4 might work if the image is being used to illustrate a discussion of a specific artistic technique and the image's subject isn't the point. #5 would only be a good choice if the context of the image were a detailed examination of the painting, but it shouldn't be alternative text, it should be part of the page's text content.</p><p>So there isn't one right answer. There are better and worse solutions, depending on context and how the image is being used within that context.</aside>
+                </section>
+            </section>
+            <section>
+            <h2>Conclusion</h2>
+            <p>Alt text is easy to do and hard to do right. Do it anyway.</p>
+            <h3>Do</h3>
+            <ul><li>consider content and function of your image</li><li>be concise</li></ul>
+            <h3>Don't</h3>
+            <ul><li>repeat available information</li><li>use the phrases 'image of' or 'graphic of'</li></ul>
+            </section>
+            <section>
+                <h2>References</h2>
+                <ul>
+                    <li><a href="http://webaim.org/">WebAIM</a>, Center for Persons with Disabilities, Utah State University</li>
+                    <li><a href="https://pages.18f.gov/accessibility">18F Accessibility Guide</a></li>
+                    <li><a href="http://www.d.umn.edu/~lcarlson/atteam">Accessible Technology Team</a>, University of Minnesota Duluth</li>
+                </ul>
+            </section>
+            <section><h2>Thank you</h2>
+                <div class="example"><img src="/img/ey.png" alt="Elizabeth Yalkut logo"><p>
+                    Elizabeth Yalkut<br />
+                    elizabeth.yalkut@columbia.edu<br />
+                    @elizabethyalkut
+                </p></div>
+            </section>
+        </div>
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+        <script>
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+            // Optional reveal.js plugins
+            dependencies: [{
+                src: 'lib/js/classList.js',
+                condition: function() {
+                    return !document.body.classList;
+                }
+            }, {
+                src: 'plugin/markdown/marked.js',
+                condition: function() {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            }, {
+                src: 'plugin/markdown/markdown.js',
+                condition: function() {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            }, {
+                src: 'plugin/highlight/highlight.js',
+                async: true,
+                callback: function() {
+                    hljs.initHighlightingOnLoad();
+                }
+            }, {
+                src: 'plugin/zoom-js/zoom.js',
+                async: true
+            }, {
+                src: 'plugin/notes/notes.js',
+                async: true
+            }]
+        });
+        </script>
+</body>
+
+</html>
